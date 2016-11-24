@@ -15,7 +15,7 @@ readTemplate("/u01/oracle/weblogic/wlserver/common/templates/domains/wls.jar")
 # Configure the Administration Server and SSL port.
 # =========================================================
 cd('Servers/AdminServer')
-set('ListenAddress','wlsadmin')
+set('ListenAddress','wladmin')
 set('ListenPort', admin_port)
 
 create('AdminServer','SSL')
@@ -95,7 +95,7 @@ assign('JMSSystemResource.SubDeployment', 'myJmsSystemResource.myQueueSubDeploym
 # Write the domain and close the domain template
 # ==============================================
 setOption('OverwriteDomain', 'true')
-setOption('ServerStartMode','dev')
+setOption('ServerStartMode','prod')
 
 cd('/')
 writeDomain('/u01/oracle/weblogic/user_projects/domains/base_domain')

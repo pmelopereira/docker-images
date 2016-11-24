@@ -8,20 +8,18 @@
 # REQUIRED FILES TO BUILD THIS IMAGE
 # -----------------------------------------
 # (1) wls1036_generic.jar (Oracle WebLogic Server 10.3.6 Generic Installer)
-#
-# HOW TO BUILD THIS IMAGE
-# -----------------------------------------
-# Put all downloaded files in the same directory as this Dockerfile
-# Run: 
-#      $ sudo docker build -t celfocus/weblogic-11g . 
 
 # Pull base image
 # ---------------
-FROM eu.gcr.io/silent-snow-93212/celfocus_oracle-jdk7
+FROM pmelopereira/oracle-jdk7
 
 # Maintainer
 # ----------
-MAINTAINER Pedro Melo Pereira <pedro.melo.pereira@celfocus.com>
+MAINTAINER Pedro Melo Pereira <pmelopereira@gmail.com>
+
+# Add files required to build this image
+RUN mkdir -p /u01/oracle/scripts
+COPY scripts/* /u01/oracle/scripts/
 
 # Environment variables required for this build (do NOT change)
 # -------------------------------------------------------------
@@ -30,8 +28,7 @@ ENV JAVA_HOME /usr/java/default
 
 # Setup required packages (unzip), filesystem, and oracle user
 # ------------------------------------------------------------
-RUN mkdir /u01 && \
-    chmod a+xr /u01 && \
+RUN chmod -R a+xr /u01 && \
     useradd -b /u01 -m -s /bin/bash oracle 
 
 # Copy packages
@@ -64,7 +61,7 @@ RUN java -jar $WLS_PKG -mode=silent -silent_xml=/u01/wls-silent.xml && \
 
 WORKDIR /u01/oracle/
 
-ENV PATH $PATH:/u01/oracle/weblogic/wlserver_10.3/server/bin:/u01/oracle/weblogic/user_projects/domains/base_domain/bin
+ENV PATH $PATH:/u01/oracle/weblogic/wlserver_10.3/server/bin:/u01/oracle/weblogic/user_projects/domains/base_domain/bin:/u01/oracle/scripts
 
 COPY nodemanager.domains /u01/oracle/weblogic/wlserver_10.3/common/nodemanager/
 COPY commEnv.sh /u01/oracle/weblogic/wlserver_10.3/common/bin/

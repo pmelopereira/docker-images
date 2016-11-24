@@ -5,21 +5,14 @@
 # This Dockerfile extends an Oracle WebLogic image by creating a sample domain.
 # Util scripts are copied into the image enabling users to plug NodeManager 
 # magically into the AdminServer running on another container as a Machine.
-#
-# HOW TO BUILD THIS IMAGE
-# -----------------------
-# Put all downloaded files in the same directory as this Dockerfile
-# Run: 
-#      $ sudo docker build -t myweblogic .
-#
 
 # Pull base image
 # ---------------
-FROM eu.gcr.io/silent-snow-93212/celfocus_oracle_weblogic11g
+FROM pmelopereira/oracle-weblogic11g
 
 # Maintainer
 # ----------
-MAINTAINER Pedro Melo Pereira <pedro.melo.pereira@celfocus.com>
+MAINTAINER Pedro Melo Pereira <pmelopereira@gmail.com>
 
 # WLS Admin Password (change it!)
 # -------------------------------

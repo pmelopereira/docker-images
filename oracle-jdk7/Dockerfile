@@ -1,6 +1,6 @@
 FROM oraclelinux:7.2
 
-MAINTAINER Pedro Melo Pereira <pedro.melo.pereira@celfocus.com>
+MAINTAINER Pedro Melo Pereira <pmelopereira@gmail.com>
 
 ENV JAVA_VERSION=7 \
     JAVA_UPDATE=79 \
