@@ -1,0 +1,10 @@
+FROM mysql
+
+COPY startSemaphore.sh /usr/local/bin
+COPY waitForTcpPort.sh /usr/local/bin
+COPY semaphore_linux_386 /usr/bin/semaphore
+
+#install
+RUN chmod +x /usr/bin/semaphore && \
+chmod +x /usr/local/bin/startSemaphore.sh && \
+chmod +x /usr/local/bin/waitForTcpPort.sh

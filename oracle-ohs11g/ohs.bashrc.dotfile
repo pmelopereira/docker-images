@@ -1,0 +1,62 @@
+# .bash_profile
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+export PS1="webohost01-\u@\h:\$PWD] # "
+
+export LANG=en_US
+
+# User specific aliases and functions
+alias ..="cd .."
+alias ...="cd ../.."
+alias l='ls -laih'
+
+# Set secure umask
+umask 027
+
+export EDITOR=/usr/bin/vim
+export JAVA_HOME=/opt/SP/weloadm/java/default
+export PATH=$PATH:/opt/SP/weloadm/java/default/bin/
+
+# Aliases and Variables
+export MW_HOME=/opt/SP/weloadm/product/fmw
+export DOMAIN_HOME=/var/SP/weloadm/admin/csDomain/aserver/csDomain
+export EXP_DIR=/opt/SP/weloadm/home/deployment
+export WCS_HOME=/var/SP/weloadm/admin/wcs_cluster/WebCenterSites_11.1.1.8.0
+export WCS_APP_ROOT=/var/SP/weloadm/admin/wcs_app_root
+export WCS_SHARED=/var/SP/global/weloadm/wcs/wcs_cluster/Shared
+export CWCS_SHARED=/var/SP/global/weloadm/cwcs/wcs_cluster/Shared
+
+alias godep='cd $EXP_DIR'
+alias gomw='cd ${MW_HOME}'
+alias goaad='cd /opt/SP/aadshare/weloadm/WCS'
+alias gotmp='cd  /var/SP/weloadm/tmp'
+alias gobkp='cd /var/SP/weloadm/backup'
+alias psj='ps ax | grep java | grep -v grep | wc -l'
+alias goadom='cd /var/SP/weloadm/admin/csDomain/aserver/csDomain/'
+alias gomdom='cd /var/SP/weloadm/admin/csDomain/mserver/csDomain/'
+alias gowcs='cd /var/SP/weloadm/admin/wcs_cluster/WebCenterSites_11.1.1.8.0'
+alias ohs_start='opmnctl stopall;opmnctl startall'
+
+# OHS related
+export ORACLE_INSTANCE=/var/SP/weloadm/admin/ohs_inst1
+alias goconf='cd ${ORACLE_INSTANCE}/config/OHS'
+alias golog='cd ${ORACLE_INSTANCE}/diagnostics/logs/OHS'
+export PATH=$PATH:$ORACLE_INSTANCE/bin
+
+# include subversion settings
+#. ~/subversion/include/default_settings.conf
+
+# svn
+#export PATH=/opt/subversion-1.5/bin:$PATH
+
+# Rerun
+export PATH=$PATH:$HOME/rerun
+export RERUN_MODULES=$HOME/sbin/rerun-modules
+[ -r $HOME/rerun/etc/bash_completion.sh ] && source $HOME/rerun/etc/bash_completion.sh
+
+export JAVA_HOME=/opt/SP/weloadm/product/fmw/latest
+export PATH=$PATH:${JAVA_HOME}/bin
